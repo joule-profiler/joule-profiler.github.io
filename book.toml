@@ -1,0 +1,15 @@
+[book]
+title = "Joule Profiler"
+authors = ["Jeremy Woirhaye", "François Gibier"]
+description = "The user book of Joule Profiler"
+language = "en"
+
+[preprocessor.mermaid]
+
+[preprocessor.katex]
+after = ["links"]
+
+[output.html]
+git-repository-url = "https://github.com/jwoirhaye/joule-profiler"
+additional-js = ["theme/js/mermaid.min.js", "theme/js/mermaid-init.js"]
+additional-css = ["theme/css/book.css"]

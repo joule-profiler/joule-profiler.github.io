@@ -1,0 +1,59 @@
+# Phases
+
+## Overview
+
+Phase-based profiling is the key feature that distinguishes **Joule Profiler** from other energy profilers. It enables energy measurement of specific sections of your program, allowing you to identify which parts contribute most to energy consumption.
+
+## Why Use Phases?
+
+### Identify Energy Hotspots
+
+Instead of measuring total program energy, phases let you pinpoint expensive sections:
+
+```python
+print("__INIT__", flush=True)
+loading()
+
+print("__WORK__", flush=True)
+process()
+
+print("__CLEANUP__", flush=True)
+```
+
+Each phase appears separately in the results, showing its individual energy consumption.
+
+### Exclude Initialization
+
+Interpreted languages (Python, JavaScript, Ruby) have significant startup overhead that dominates short programs:
+
+```bash
+# Python interpreter initialization can be 50-100ms
+# Your actual work might be only 10ms
+sudo joule-profiler profile -- python my_script.py
+# Result: 90% of energy is interpreter startup, not what you want to measure
+```
+
+If you want to exclude this initialization phase, then using phases might be a good answer:
+
+```python
+# my_script.py
+import heavy_libraries
+model = load()  # Initialization overhead
+
+print("__START__", flush=True)  # Mark the beginning of actual work
+process()    # This is what you want to measure
+print("__END__", flush=True)
+```
+
+```bash
+sudo joule-profiler profile --token-pattern "__START__|__END__" -- python my_script.py
+```
+
+Now you measure the `__START__` to `__END__` phase, excluding interpreter startup and library loading.
+
+## Implementation Notes
+
+Phases are detected by monitoring the program's stdout for tokens matching a regular expression.
+The profiler spawns the program and capture the standard output. Then, it scans each line and triggers measurements when tokens matching the configured regex pattern are detected. Finally, it associates metrics to each phase.
+
+Future versions may support lower-overhead mechanisms like inter-process communication with language-specific wrappers to minimize the overhead introduced by I/O operations.

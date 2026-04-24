@@ -20,6 +20,6 @@ In the future, we may implement an alternative using inter-process communication
 
 ![Phases](figures/phases.png)
 
-[^jouleit]: [Jouleit](github.com/powerapi-ng/jouleit)
+[^jouleit]: [Jouleit](https://github.com/powerapi-ng/jouleit)
 [^alumet]: [Alumet](https://alumet.dev)
 [^scaphandre]: [Scaphandre](https://github.com/hubblo-org/scaphandre)

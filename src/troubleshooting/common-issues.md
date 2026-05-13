@@ -20,7 +20,7 @@ sudo joule-profiler list-sensors
 **Solutions:**
 - Update Linux kernel to 3.13+ (required for RAPL support)
 - Check BIOS settings (some systems disable RAPL in firmware)
-- Verify CPU supports RAPL (most Intel CPUs since Sandy Bridge/2011, AMD since Zen)
+- Verify CPU supports RAPL (most Intel CPUs since Sandy Bridge, AMD since Zen)
 - Try specifying custom RAPL path:
   ```bash
   sudo joule-profiler --rapl-path /sys/class/powercap/intel-rapl phases -- ./my-program

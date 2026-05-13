@@ -8,8 +8,16 @@ curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/
 
 This script automatically detects your operating system and architecture, downloads the correct pre-built binary, and installs it to `/usr/local/bin/`.
 
+Or build it with cargo:
+```bash
+cargo install joule-profiler-cli
+
+# Move it to /usr/local/bin to install it globally
+mv ~/.cargo/bin/joule-profiler /usr/local/bin/
+```
+
 > [!NOTE]
-> You may be prompted for your sudo password during installation to move the binary to the system path.
+> You may be prompted for your sudo password during the installation to move the binary to the system path.
 
 # Custom Installation
 

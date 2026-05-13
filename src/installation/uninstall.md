@@ -13,3 +13,9 @@ curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/
 ```bash
 sudo rm /usr/local/bin/joule-profiler
 ```
+
+If you installed **Joule Profiler** with cargo and didn't move the binary, then you can delete it with:
+
+```bash
+rm ~/.cargo/bin/joule-profiler
+```

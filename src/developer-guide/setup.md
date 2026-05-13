@@ -8,7 +8,7 @@ Before starting, ensure you have the following installed:
 
 ### System Requirements
 - **Linux OS** (Ubuntu, Debian, Fedora, Arch, etc.)
-- Intel CPU with **RAPL support** (most CPUs since Sandy Bridge, 2011)
+- Intel or AMD CPU with **RAPL support** (most CPUs since Sandy Bridge in 2011 for Intel, and most since Zen architecture in 2017 for AMD)
 - Root access (required to read RAPL counters with Powercap backend)
 
 ### Software Dependencies
@@ -79,7 +79,7 @@ cargo clippy    # lint code for warnings and suggestions
 ## 6. Notes
 
 > [!NOTE]
-> - Energy measurements require **Intel CPUs** and Linux with the **powercap** framework or **perf_event** kernel module.
+> - Energy measurements require **Intel or AMD CPUs** and Linux with the **powercap** framework or **perf_event** kernel module.
 > - Running programs under a virtual machine may give inaccurate readings due to limited access to RAPL counters.
 > - Root access is required for RAPL counters, but you can test some library functionality without root.
 

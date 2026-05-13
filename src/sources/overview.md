@@ -4,13 +4,14 @@
 
 ### Supported Architectures
 
-- **CPU:** The only target is Intel x86 architecture at the moment.  
+- **CPU:** The only target is Intel and AMD x86 architecture at the moment.  
 - **GPU:** Current focus is on Nvidia GPUs.
 - **OS:** Only Linux-based systems are officially supported at the moment.  
 
 ### Available Sources
 
-- **Intel RAPL:** Measures CPU and DRAM energy domains.  
+- **Intel RAPL:** Measures CPU energy consumption.
+  - Available on most Intel CPUs since Sandy Bridge architecture in 2011, and most AMD CPUs since Zen microarchitecture in 2017.  
   - Implemented using either **perf_event** or **Powercap** on Linux systems.  
   - For details, see [RAPL](rapl/introduction.md).
 

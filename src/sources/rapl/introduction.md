@@ -4,7 +4,7 @@
 
 RAPL (Running Average Power Limit) is an Intel processor feature that allows real-time energy consumption measurements of CPU and memory subsystem.
 
-This technology has been available on Intel processors since *Sandy Bridge* generation.
+This technology has been available on most Intel processors since Sandy Bridge generation (2011), and is also available on some AMD processors since Zen architecture (2017).
 
 RAPL provides energy measurements at different scales (e.g.,CPU core, integrated GPU, package), enabling you to measure energy consumption per component and understand more precisely how each part of the system contributes to the overall power usage.
 

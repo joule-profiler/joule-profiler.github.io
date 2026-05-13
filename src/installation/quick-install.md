@@ -3,7 +3,7 @@
 Install the latest version with a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash
 ```
 
 This script automatically detects your operating system and architecture, downloads the correct pre-built binary, and installs it to `/usr/local/bin/`.
@@ -18,7 +18,7 @@ For more control over the installation process, you can pass arguments to the in
 **Install to a custom directory**, useful for non-root users or specific environment configurations (e.g., `~/.local/bin`):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/install.sh | bash -s -- --dir ~/.local/bin
+curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash -s -- --dir ~/.local/bin
 ```
 
 **Install a specific version:**
@@ -26,7 +26,7 @@ curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/insta
 If you need to install a specific version depending on the features you need:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/install.sh | bash -s -- --version v0.1.0
+curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash -s -- --version v0.1.0
 ```
 
 **List available versions:**
@@ -34,11 +34,11 @@ curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/insta
 You can see the list of available versions with the installer:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/install.sh | bash -s -- --list
+curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash -s -- --list
 ```
 
 **Non-interactive Mode**, for use in automated scripts or CI pipelines:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/install.sh | bash -s -- --yes
+curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash -s -- --yes
 ```

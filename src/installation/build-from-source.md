@@ -4,7 +4,7 @@ You can build the profiler from the sources by cloning the repository. It can be
 
 ```bash
 # Clone the repository
-git clone https://github.com/jwoirhaye/joule-profiler.git
+git clone https://github.com/joule-profiler/joule-profiler.git
 cd joule-profiler
 
 # Build and install system-wide

@@ -5,7 +5,7 @@ Getting started with **Joule Profiler** is easy and straightforward.
 First, install the latest version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/jwoirhaye/joule-profiler/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash
 ```
 
 ## Basic Measurement

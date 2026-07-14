@@ -35,7 +35,7 @@
 - [Nvidia GPU (NVML)](sources/nvml/introduction.md)
     - [Setup & Requirements](sources/nvml/setup.md)
     - [GPU Metrics](sources/nvml/metrics.md)
-- [AMD SMI](sources/amdsmi/introduction.md)
+- [AMD GPU (AMD SMI)](sources/amdsmi/introduction.md)
 - [Cgroup](sources/cgroup/introduction.md)
 - [Procfs](sources/procfs/introduction.md)
 

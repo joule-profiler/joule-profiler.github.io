@@ -3,9 +3,13 @@
 Getting started with **Joule Profiler** is easy and straightforward.
 
 First, install the latest version:
-
 ```bash
 curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/install.sh | bash
+```
+
+Or build it with cargo:
+```bash
+cargo install joule-profiler-cli
 ```
 
 ## Basic Measurement

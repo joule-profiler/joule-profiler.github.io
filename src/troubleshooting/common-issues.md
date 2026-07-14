@@ -43,11 +43,8 @@ sudo joule-profiler list-sensors
 ### Solutions
 
 ```bash
-# 1. Use multiple iterations to reduce variance
-sudo joule-profiler sphasese -n 20 -- ./my-program
-
 # 2. Enable logging to see warnings and diagnostics
-sudo joule-profiler -vv phases -- ./my-program
+sudo joule-profiler -vv profile -- ./my-program
 
 # 3. Minimize background processes
 # Close browsers, IDEs, file syncing, etc.
@@ -64,11 +61,11 @@ sudo cpupower frequency-set --governor performance
 
 ## Tokens Not Detected (Phases Mode)
 
-**Problem:** No phases computed, warning "No tokens matching pattern".
+**Problem:** No phases computed.
 
 **Check with logging:**
 ```bash
-sudo joule-profiler -v phases -- ./my-program
+sudo joule-profiler -v profile -- ./my-program
 ```
 
 **Solutions:**

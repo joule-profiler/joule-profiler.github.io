@@ -36,8 +36,8 @@
     - [Setup & Requirements](sources/nvml/setup.md)
     - [GPU Metrics](sources/nvml/metrics.md)
 - [AMD SMI](sources/amdsmi/introduction.md)
-- [cgroup](sources/cgroup/introduction.md)
-- [procfs](sources/procfs/introduction.md)
+- [Cgroup](sources/cgroup/introduction.md)
+- [Procfs](sources/procfs/introduction.md)
 
 ---
 

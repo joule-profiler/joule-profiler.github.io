@@ -47,7 +47,17 @@ This will execute your program and display energy consumption metrics in the ter
   UNCORE-0            :     355224 µJ
 ```
 
+Some example programs are provided in the [examples](https://github.com/joule-profiler/joule-profiler/tree/main/examples/programs) directory in the project repository.
+
 ## Phases
+
+In order to split the program's execution into phases, Joule Profiler uses a configurable regular expression pattern and checks for each line of the standard output if it contains the pattern.
+The regular expression doesn't need to match the entire line but can match only a part of it. (e.g., a part of a line of log trace) 
+The default token pattern is `__[A-Z0-9_]+__`.
+The token pattern can be configured through the CLI:
+```bash
+joule-profiler profile --token-pattern <TOKEN> -- ./program
+```
 
 Put some prints separating your program's parts:
 
@@ -209,7 +219,7 @@ You can explicitly choose which backend to use:
 # Use Powercap backend (requires root)
 sudo joule-profiler --rapl-backend=powercap profile -- ./my-program
 
-# Use perf_event backend (lower overhead, may require kernel configuration)
+# Use perf_event backend (lower overhead, may require kernel configuration, see perf_event_paranoid documentation)
 joule-profiler --rapl-backend=perf profile -- ./my-program
 ```
 

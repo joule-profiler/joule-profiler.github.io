@@ -4,7 +4,13 @@ This guide shows how to add phase markers to your programs for energy profiling.
 
 ## Basic Concept
 
-Print tokens to stdout and detect different sections of your code. The profiler detects these tokens and measures each section separately.
+In order to split the program's execution into phases, Joule Profiler uses a configurable regular expression pattern and checks for each line of the standard output if it contains the pattern.
+The regular expression doesn't need to match the entire line but can match only a part of it. (e.g., a part of a line of log trace) 
+The default token pattern is `__[A-Z0-9_]+__`.
+The token pattern can be configured through the CLI:
+```bash
+joule-profiler profile --token-pattern <TOKEN> -- ./program
+```
 
 ## Add Phase Markers
 
@@ -67,10 +73,10 @@ Common patterns:
 ## Run the Profiler
 
 ```bash
-sudo joule-profiler profile --token-pattern "__[A-Z_]+__" -- python my_script.py
+sjoule-profiler profile --token-pattern "__[A-Z_]+__" -- ./program
 ```
 
-Joule Profiler will profile the program by detecting tokens matching the configured pattern in the standard output. It will make a measurement between each token to report energy and various metrics across phases.
+Joule Profiler will make a measurement between each token to report energy and various metrics across phases.
 
 ## Complete Example
 
@@ -91,7 +97,7 @@ print("__DONE__", flush=True)
 
 **Command:**
 ```bash
-sudo joule-profiler profile --token-pattern "__[A-Z_]+__" -- python script.py
+joule-profiler profile --token-pattern "__[A-Z_]+__" -- ./program
 ```
 
 **Output:**

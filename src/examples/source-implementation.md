@@ -1,6 +1,6 @@
 # Source Implementation
 
-Implementing a new metric source in **Joule Profiler** is straightforward. By implementing the `MetricReader` trait, you only need to define the core measurement logic (`measure`, `retrieve`, `get_sensors`, `to_metrics`, `get_name`) and optionally override `init` or `join` if your source requires setup or polling logic. This design makes it easy to add new sources without boilerplate.
+Implementing a new metric source in **Joule Profiler** is straightforward. By implementing the `MetricReader` trait, you only need to define the core measurement logic (`measure`, `retrieve`, `get_sensors`, `to_metrics`, `get_name`) and optionally override `pre_init`, `init`, or `join` if your source requires setup or polling logic. This design makes it easy to add new sources without boilerplate.
 
 ```rs
 use joule_profiler_core::{
@@ -20,16 +20,16 @@ struct MySource {
     count: u64,
 }
 
-impl MySource {
-    pub fn new() -> Self {
-        Self::default()
-    }
-}
-
 impl MetricReader for MySource {
     type Type = u64;
 
     type Error = MetricSourceError;
+
+    type Config = ();
+
+    fn from_config(config: ()) -> Result<Self, Self::Error> {
+        Ok(Self::default())
+    }
 
     async fn measure(&mut self) -> Result<(), Self::Error> {
         self.count += 1;

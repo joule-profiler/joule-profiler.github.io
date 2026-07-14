@@ -6,6 +6,9 @@ For a detailed overview of what **perf_event** is and how it works, see [perf_ev
 
 To measure the energy consumption of the RAPL domains through perf_event, we're using the **perf_event_open_sys** rust crate, which is a wrapper around the **perf_event_open** Linux system call, used to open perf event counters. The crate also provides bindings to associated perf_event I/O controllers to manage the opened counters.
 
+> [!IMPORTANT]
+> To access RAPL counters without root privileges through the perf_event backend, you have to configure the [perf_event_paranoid](../perf_event/perf_event_paranoid.md) level to 0 or -1.
+
 ## Overflow Handling ?
 
 Unlike [**powercap**](powercap.md), perf_event handles the MSRs overflows and store counters on eight bytes. Moreover, the counters start at zero, which make them easy to compute and also completely prevent overflows, for example, on a CPU consuming at an average of 200 W, it would take 2924 years to overflow the **package** domain.

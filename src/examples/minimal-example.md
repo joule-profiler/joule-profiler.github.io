@@ -8,14 +8,17 @@ Measure any program's energy consumption:
 
 ```bash
 # Measure a simple command
-sudo joule-profiler profile -- sleep 1
+joule-profiler profile -- sleep 1
 
-# Measure a Python script
-sudo joule-profiler profile -- python my_script.py
+# Measure a Python script, example at: examples/programs/workload.py
+joule-profiler profile -- python3 examples/programs/workload.py
 
-# Measure a compiled program with arguments
-sudo joule-profiler profile -- ./my-program arg1 arg2
+# Measure a program with arguments
+joule-profiler profile -- ./my-program arg1 arg2
 ```
+
+Use `sudo` if root privileges are required.
+Some example programs are provided in the [examples](https://github.com/joule-profiler/joule-profiler/tree/main/examples/programs) directory in the project repository.
 
 ## Basic Phase Detection
 

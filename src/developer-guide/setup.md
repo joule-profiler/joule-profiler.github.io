@@ -9,7 +9,7 @@ Before starting, ensure you have the following installed:
 ### System Requirements
 - **Linux OS** (Ubuntu, Debian, Fedora, Arch, etc.)
 - Intel or AMD CPU with **RAPL support** (most CPUs since Sandy Bridge in 2011 for Intel, and most since Zen architecture in 2017 for AMD)
-- Root access (required to read RAPL counters with Powercap backend)
+- Some sources may require root access (e.g., RAPL with Powercap backend, cgroup creation)
 
 ### Software Dependencies
 
@@ -81,6 +81,5 @@ cargo clippy    # lint code for warnings and suggestions
 > [!NOTE]
 > - Energy measurements require **Intel or AMD CPUs** and Linux with the **powercap** framework or **perf_event** kernel module.
 > - Running programs under a virtual machine may give inaccurate readings due to limited access to RAPL counters.
-> - Root access is required for RAPL counters, but you can test some library functionality without root.
 
 By following these steps, you’ll have a fully functional development environment for **Joule Profiler** and be ready to contribute or test new features.

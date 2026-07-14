@@ -67,12 +67,12 @@ Performance counters can expose sensitive information about other processes. An 
 ### "Permission denied" errors
 
 ```
-Error: perf_event_paranoid level is 1, try setting it to 0 or launch Joule Profiler with root rights
+perf_event_paranoid level is 1, try setting it to 0 or launch Joule Profiler with root rights
 ```
 
 **Solution**: Either lower `perf_event_paranoid` level, grant Joule Profiler `CAP_PERFMON` capability or launch it with root privileges (sudo).
 
-> [!NOTE]
+> [!IMPORTANT]
 > To access RAPL counters using perf_event, you need to set perf_event_paranoid level to 0, or launch the profiler with root privileges.
 
 ## References

@@ -5,7 +5,7 @@ This example shows how to list all available sensors using Joule Profiler.
 ## Minimal Example
 
 ```bash
-./target/debug/joule-profiler list-sensors
+joule-profiler list-sensors
 ```
 
 > [!NOTE]
@@ -33,7 +33,7 @@ And it shows:
 If you want to list also your GPU devices, use the `--gpu` CLI flag:
 
 ```bash
-./target/debug/joule-profiler --gpu list-sensors
+joule-profiler --gpu list-sensors
 ```
 
 ```
@@ -64,7 +64,7 @@ If you want to list also your GPU devices, use the `--gpu` CLI flag:
 If you want to list also your GPU devices, use the `--perf` CLI flag:
 
 ```bash
-./target/debug/joule-profiler --perf list-sensors
+joule-profiler --perf list-sensors
 ```
 
 ```

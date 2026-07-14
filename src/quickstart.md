@@ -10,9 +10,6 @@ curl -fsSL https://raw.githubusercontent.com/joule-profiler/joule-profiler/main/
 Or build it with cargo:
 ```bash
 cargo install joule-profiler-cli
-
-# Move it to /usr/local/bin to install it globally
-mv ~/.cargo/bin/joule-profiler /usr/local/bin/
 ```
 
 ## Basic Measurement

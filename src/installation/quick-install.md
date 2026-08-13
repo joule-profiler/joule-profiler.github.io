@@ -20,10 +20,10 @@ sudo mv ~/.cargo/bin/joule-profiler /usr/local/bin/
 > By default, Joule Profiler is installed with all the sources and features, if you want to filter which sources to compile the profiler with, use `--no-default-features` and `--features` cargo flags: 
 > ```bash
 > # Install only the RAPL and perf_event sources
-> cargo install joule-profiler-cli --no-default-features --features rapl,perf
+> cargo install joule-profiler-cli --no-default-features --features rapl-perf,perf
 > ```
 
-A source is usually featured with its name but if you're struggling to activate one, check the different features in the [Cargo.toml](https://github.com/joule-profiler/joule-profiler/blob/main/cli/Cargo.toml) file.
+A source is usually featured with its name, except for RAPL where you have to suffix with the backend. But if you're struggling to activate one, check the different features in the [Cargo.toml](https://github.com/joule-profiler/joule-profiler/blob/main/cli/Cargo.toml) file.
 
 # Custom Installation
 

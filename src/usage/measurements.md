@@ -12,8 +12,8 @@ To ensure accurate measurements from the first instruction:
 
 1. The program is spawned as a child process
 2. Immediately paused using `SIGSTOP` before execution begins
-3. The process ID (PID) is shared with all metric sources via atomic storage and operations
-4. Sources attach their instrumentation (e.g., [perf_event](../sources/perf_event/introduction.md) counters scoped to the PID)
+3. The process ID (PID) is shared with all metric sources
+4. Sources attach their instrumentation (e.g., [**perf_event**](../sources/perf_event/introduction.md) counters scoped to the PID)
 5. The program is resumed with `SIGCONT`
 
 This allows pid filtering for sources implementing it, while minimizing the introduced overhead by stopping the program during the initialization of sources requiring per-process measurement.

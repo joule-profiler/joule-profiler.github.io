@@ -15,8 +15,6 @@ source-rapl = { path = "../source-rapl" }
 
 > Adjust the paths according to your project layout.
 
-> The profiler core crate will be published on **crates.io** soon, to be usable easily with cargo.
-
 ## Basic Usage
 
 ```rust
@@ -35,7 +33,6 @@ async fn main() {
     // Configure the profiling session
     let config = ProfileConfigBuilder::default()
         .cmd(vec!["sleep".into(), "1".into()])
-        .iterations(1)
         .build()
         .unwrap();
 
@@ -70,7 +67,6 @@ use joule_profiler_core::config::ProfileConfigBuilder;
 
 let config = ProfileConfigBuilder::default()
     .cmd(vec!["./my_program".into()])
-    .iterations(5) // repeat measurement 5 times
     .build()
     .unwrap();
 ```

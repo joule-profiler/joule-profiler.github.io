@@ -32,12 +32,14 @@ cat /proc/sys/kernel/perf_event_paranoid
 ## Configuring perf_event_paranoid
 
 ```bash
-# Set to level 1 (moderate restrictions)
-sudo sysctl kernel.perf_event_paranoid=1
+# Set to level 0
+sudo sysctl kernel.perf_event_paranoid=0
 
 # Or directly write to proc
-echo 1 | sudo tee /proc/sys/kernel/perf_event_paranoid
+echo 0 | sudo tee /proc/sys/kernel/perf_event_paranoid
 ```
+
+Using this level allow to open [**RAPL**](../rapl/introduction.md) and hardware counters.
 
 ## Security Implications
 

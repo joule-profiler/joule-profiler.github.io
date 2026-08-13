@@ -46,7 +46,7 @@ print("__END__", flush=True)
 ```
 
 ```bash
-sudo joule-profiler profile --token-pattern "__START__|__END__" -- python script.py
+joule-profiler profile --token-pattern "__START__|__END__" -- python script.py
 ```
 
 Now you measure the `__START__` to `__END__` phase, excluding interpreter startup and library loading.

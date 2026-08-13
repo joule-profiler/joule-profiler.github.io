@@ -44,7 +44,7 @@ joule-profiler list-sensors
 
 ```bash
 # 2. Enable logging to see warnings and diagnostics
-sudo joule-profiler -vv profile -- <COMMAND>
+joule-profiler -vv profile -- <COMMAND>
 
 # 3. Minimize background processes
 # Close browsers, IDEs, file syncing, etc.
@@ -61,7 +61,7 @@ sudo cpupower frequency-set --governor performance
 
 **Check with logging:**
 ```bash
-sudo joule-profiler -v profile -- <COMMAND>
+joule-profiler -v profile -- <COMMAND>
 ```
 
 **Solutions:**

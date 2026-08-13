@@ -14,7 +14,7 @@ This issue happens with **powercap** backend.
 
 **Check available sensors:**
 ```bash
-sudo joule-profiler list-sensors
+joule-profiler list-sensors
 ```
 
 **Solutions:**
@@ -207,7 +207,7 @@ Here, we can see that the **__WORK_START__ -> __WORK_END__** has more accurate r
 - Verify your hardware supports the requested counters (e.g., RAPL, perf_event support)
 - Check that metric sources are properly initialized (use `-vv` for detailed logging)
 - Ensure you have necessary permissions for the metric source
-- List available sensors: `sudo joule-profiler list-sensors`
+- List available sensors: `joule-profiler list-sensors`
 
 ## High Overhead on Very Frequent Measurements
 

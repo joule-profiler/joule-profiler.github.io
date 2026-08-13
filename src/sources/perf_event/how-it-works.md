@@ -2,7 +2,7 @@
 
 ## Kernel Counter Management
 
-The Linux kernel manages performance counters through the `perf_event` subsystem. When a perf_event counter is opened, the Linux kernel allocates a counter and periodically reads the hardware Performance Monitoring Unit (PMU) registers. It maintains counter values across context switches and timer interrupts.
+The Linux kernel manages performance counters through the perf_event subsystem. When a perf_event counter is opened, the Linux kernel allocates a counter and periodically reads the hardware Performance Monitoring Unit (PMU) registers. It maintains counter values across context switches and timer interrupts.
 
 ## Counter Multiplexing
 
@@ -17,6 +17,7 @@ The standard `read()` system call requires a context switch (100-300ns overhead)
 This is useful for high-frequency monitoring where system call overhead would be significant.
 
 For now, **Joule Profiler** is using the `read` syscall, but we may implement an mmap version to reduce the overhead of the syscalls.
+However, due do the limitations of the perf_event subsystem, using mmap might not be feasible for some use cases, including the profiling of virtualized environments.
 
 ## References
 

@@ -8,25 +8,23 @@ Because of this separation, the CLI can evolve independently from the core logic
 
 Here's a summary of all the CLI arguments:
 
-| Argument | Short | Long | Default | Description |
-|---|---|---|---|---|
-| `verbose` | `-v` | `--verbose` | `0` | Verbosity level. Stack for more detail: `-v`, `-vv`, `-vvv`. |
-| `rapl_path` || `--rapl-path` | Auto-detected | Override the base path for Intel RAPL counters. Falls back to `$JOULE_PROFILER_RAPL_PATH`, then `/sys/devices/virtual/powercap/intel-rapl`. |
-| `sockets` | `-s` | `--sockets` | All | CPU sockets to measure (e.g., `0` or `0,1`). |
-| `json` || `--json` | `false` | Export results as JSON. Conflicts with `--csv`. |
-| `csv` || `--csv` | `false` | Export results as semicolon-separated CSV. Conflicts with `--json`. |
-| `output_file` | `-o` | `--output-file` | `data<TIMESTAMP>.csv/json` | Custom output file path for CSV/JSON export. |
-| `gpu` || `--gpu` | `false` | Enable GPU measurement support. |
-| `perf` || `--perf` | `false` | Enable `perf_event` hardware counters. |
-| `rapl_backend` || `--rapl-backend` | `Perf` | Choose RAPL backend: `powercap` or `perf`. |
-| `command` || *(subcommand)* | *(required)* | The subcommand/program to execute and profile. |
+| Argument | Default | Description |
+|---|---|---|
+| `-v` or `--verbose` | ERROR level | Verbosity level. Stack for more detail: `-v`, `-vv`, `-vvv`. |
+| `--output-format` | `terminal` | Specify the output format in which to export the data. (Available: terminal, csv, json) |
+| `-o` or `--output-file` | `data<TIMESTAMP>.csv/json` | Custom output file path for CSV / JSON export. |
+| `--sources` | `rapl` | A comma-separated list of the activated sources. (e.g., `rapl,perf,nvml`) |
+| `-D` or `--define` || Override a configuration key, repeatable. (e.g., `-D profiler.rapl_backend=powercap`) |
+| `--config` || TOML configuration file. Every key it sets can also be set with `-D`. |
+| `command` | None (required) | The program to execute and profile. |
 
 The subcommand `profile` has also some arguments:
 
-| Argument | Short | Long | Default | Description |
-|---|---|---|---|---|
-| `token_pattern` || `--token-pattern` | `__[A-Z0-9_]+__` | Regex to detect phase tokens in the program's stdout. If the pattern contains a capture group, the captured text becomes the token name. Phases are computed between consecutive tokens (and from START/END). |
-| `stdout_file` | `-o` | `--stdout-file` | None | Redirect the profiled program's stdout to a file. |
-| `rapl_polling` || `--rapl-polling` | None | RAPL counter polling frequency, in seconds. |
+| Argument | Default | Description |
+|---|---|---|
+| `--token-pattern` | `__[A-Z0-9_]+__` | Regex to detect phase tokens in the program's stdout. |
+| `--stdout-file` | None | Redirect the profiled program's stdout to a file. |
+| `--use-root` | false | Executes the profiled command with root privileges if true and Joule Profiler is launched as root. |
+| `--init-timeout` | 1s | Duration before aborting sources initialization. (e.g., 1s, 10s, 1m) |
 
 The profiled command is provided after `--` at the end of the arguments.

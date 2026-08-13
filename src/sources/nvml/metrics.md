@@ -1,14 +1,8 @@
 # Metrics
 
-**Joule Profiler** utilizes NVML to retrieve energy consumption metrics, focusing on the power usage of the GPU components.
+**Joule Profiler** uses NVML to retrieve several metrics of GPU devices, such as energy consumption, GPU utilization or VRAM usage.
 
-## Collected Metrics
-
-| Metric | Unit | Description | Scope |
-| :--- | :--- | :--- | :--- |
-| **Energy Consumption** | Millijoules (mJ) | Total energy consumed by the GPU since the driver was loaded or the counter was reset. | Per GPU Device |
-
-While NVML is capable of reporting various other telemetry data (such as fan speeds, temperature, and clock rates), **Joule Profiler** focuses specifically on the energy counters to compute the power usage of your application phases.
+While NVML is capable of reporting various other telemetry data (such as fan speeds, temperature, and clock rates), **Joule Profiler** focuses specifically on the energy and usage metrics.
 
 ## Precision and Overflow
 

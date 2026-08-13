@@ -12,7 +12,7 @@ While they both use the same underlying technology (e.g., **MSRs for Intel RAPL*
 | High-frequency, fine-grained energy measurement | perf_event | Minimal overhead introduced and less transition from user to kernel space |
 | Moderate to low-frequency | perf_event or Powercap | Syscall overhead is acceptable, perf_event requires more configuration (perf_event_paranoid), while powercap is easy to use |
 
-**Summary:** You should always prefer to use perf_event if it is configured on your system, but powercap is turnkey and easy to use.
+**Summary:** You should always prefer to use perf_event if it is configured on your system, but powercap is turnkey and easy to use but it requires root privileges.
 
 ## Why not use MSRs ?
 

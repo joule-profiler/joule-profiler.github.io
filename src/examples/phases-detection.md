@@ -9,7 +9,7 @@ The regular expression doesn't need to match the entire line but can match only 
 The default token pattern is `__[A-Z0-9_]+__`.
 The token pattern can be configured through the CLI:
 ```bash
-joule-profiler profile --token-pattern <TOKEN> -- ./program
+joule-profiler profile --token-pattern <TOKEN> -- <COMMAND>
 ```
 
 ## Add Phase Markers
@@ -73,7 +73,7 @@ Common patterns:
 ## Run the Profiler
 
 ```bash
-sjoule-profiler profile --token-pattern "__[A-Z_]+__" -- ./program
+joule-profiler profile --token-pattern "__[A-Z_]+__" -- <COMMAND>
 ```
 
 Joule Profiler will make a measurement between each token to report energy and various metrics across phases.
@@ -97,18 +97,81 @@ print("__DONE__", flush=True)
 
 **Command:**
 ```bash
-joule-profiler profile --token-pattern "__[A-Z_]+__" -- ./program
+joule-profiler profile --token-pattern "__[A-Z_]+__" -- python3 script.py
 ```
 
 **Output:**
 ```
-Phase 0: __LOAD__ → __COMPUTE__
-  Duration: 502 ms
-  package-0: 1.2 J
+__LOAD__
+__COMPUTE__
+__DONE__
+╔════════════════════════════════════════════════╗
+║  Command                                       ║
+╚════════════════════════════════════════════════╝
+  python3 script.py
+ ────────────────────────────────────────────────
+  Duration            :       1050 ms
+  Exit code           :          0
 
-Phase 1: __COMPUTE__ → __DONE__
-  Duration: 501 ms
-  package-0: 1.5 J
+╔════════════════════════════════════════════════╗
+║  Phase: START -> __LOAD__                      ║
+╚════════════════════════════════════════════════╝
+  Duration            :         10 ms
+  Start token         :      START
+  End token           : __LOAD__ (line 0)
+
+┌────────────────────────────────────────────────┐
+│ RAPL (perf_event)                              │
+└────────────────────────────────────────────────┘
+  CORE-0              :     140991 µJ
+  PACKAGE-0           :     168334 µJ
+  PSYS                :     304016 µJ
+  UNCORE-0            :          0 µJ
+
+╔════════════════════════════════════════════════╗
+║  Phase: __LOAD__ -> __COMPUTE__                ║
+╚════════════════════════════════════════════════╝
+  Duration            :        520 ms
+  Start token         : __LOAD__ (line 0)
+  End token           : __COMPUTE__ (line 1)
+
+┌────────────────────────────────────────────────┐
+│ RAPL (perf_event)                              │
+└────────────────────────────────────────────────┘
+  CORE-0              :     670959 µJ
+  PACKAGE-0           :    1660888 µJ
+  PSYS                :    3456726 µJ
+  UNCORE-0            :      45166 µJ
+
+╔════════════════════════════════════════════════╗
+║  Phase: __COMPUTE__ -> __DONE__                ║
+╚════════════════════════════════════════════════╝
+  Duration            :        505 ms
+  Start token         : __COMPUTE__ (line 1)
+  End token           : __DONE__ (line 2)
+
+┌────────────────────────────────────────────────┐
+│ RAPL (perf_event)                              │
+└────────────────────────────────────────────────┘
+  CORE-0              :     479736 µJ
+  PACKAGE-0           :    1361267 µJ
+  PSYS                :    2973632 µJ
+  UNCORE-0            :      34912 µJ
+
+╔════════════════════════════════════════════════╗
+║  Phase: __DONE__ -> END                        ║
+╚════════════════════════════════════════════════╝
+  Duration            :         14 ms
+  Start token         : __DONE__ (line 2)
+  End token           :        END
+
+┌────────────────────────────────────────────────┐
+│ RAPL (perf_event)                              │
+└────────────────────────────────────────────────┘
+  CORE-0              :     207580 µJ
+  PACKAGE-0           :     256774 µJ
+  PSYS                :     436340 µJ
+  UNCORE-0            :          0 µJ
 ```
 
 If you encounter some issues with phases, see [troubleshooting](../troubleshooting/overview.md).

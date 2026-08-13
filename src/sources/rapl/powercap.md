@@ -2,9 +2,9 @@
 
 ## Overview
 
-Powercap[^powercap] is a Linux kernel framework that provides a generic and standardized interface for power capping and energy monitoring accross different hardware power domains.
+**Powercap**[^powercap] is a Linux kernel framework that provides a generic and standardized interface for power capping and energy monitoring accross different hardware power domains.
 
-Instead of accessing low-level hardware registers (e.g MSRs), Powercap safely exposes energy metrics via sysfs. 
+Instead of accessing low-level hardware registers (e.g MSRs), *Powercap* safely exposes energy metrics via the Linux sysfs. 
 
 The use of powercap instead of MSRs may seem disadvantageous and cause more overhead while measuring energy consumption, but there is actually no or an insignificant overhead introduced by the use of the powercap framework. Moreover, the abstraction provided by powercap increases the maintainibility, and powercap smoothens the energy results to avoid noise.
 

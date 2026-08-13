@@ -1,3 +1,25 @@
+/* Figures allowed to overflow the text column when the screen is wide enough. */
+.content .wide-figure {
+    display: block;
+    margin-inline: auto;
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .content .wide-figure {
+        max-width: none;
+        width: calc(100% + 100px);
+        margin-inline: -50px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .content .wide-figure {
+        width: calc(100% + 190px);
+        margin-inline: -95px;
+    }
+}
+
 .labelBkg {
     background-color: var(--bg) !important;
 }

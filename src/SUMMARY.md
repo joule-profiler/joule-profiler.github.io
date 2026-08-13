@@ -28,13 +28,16 @@
     - [Perf Event Backend](sources/rapl/perf-event.md)
     - [Backend Comparison](sources/rapl/backend-comparison.md)
     - [Accuracy & Limitations](sources/rapl/accuracy.md)
-- [Nvidia GPU (NVML)](sources/nvml/introduction.md)
-    - [Setup & Requirements](sources/nvml/setup.md)
-    - [GPU Metrics](sources/nvml/metrics.md)
 - [perf_event](sources/perf_event/introduction.md)
     - [How It Works](sources/perf_event/how-it-works.md)
     - [perf_event_paranoid](sources/perf_event/perf_event_paranoid.md)
     - [Accuracy](sources/perf_event/accuracy.md)
+- [Nvidia GPU (NVML)](sources/nvml/introduction.md)
+    - [Setup & Requirements](sources/nvml/setup.md)
+    - [GPU Metrics](sources/nvml/metrics.md)
+- [AMD GPU (AMD SMI)](sources/amdsmi/introduction.md)
+- [Cgroup](sources/cgroup/introduction.md)
+- [Procfs](sources/procfs/introduction.md)
 
 ---
 

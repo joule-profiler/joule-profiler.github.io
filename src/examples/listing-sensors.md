@@ -5,11 +5,8 @@ This example shows how to list all available sensors using Joule Profiler.
 ## Minimal Example
 
 ```bash
-./target/debug/joule-profiler list-sensors
+joule-profiler list-sensors
 ```
-
-> [!NOTE]
-> You should be able to list sensors without root privileges.
 
 And it shows:
 ```
@@ -30,11 +27,18 @@ And it shows:
 
 ## With GPU support
 
-If you want to list also your GPU devices, use the `--gpu` CLI flag:
+You can also list the GPU devices available:
 
+For NVIDIA GPU:
 ```bash
-./target/debug/joule-profiler --gpu list-sensors
+joule-profiler --sources nvml list-sensors
 ```
+
+For AMD GPU:
+```bash
+joule-profiler --sources amdsmi list-sensors
+```
+
 
 ```
 ╔════════════════════════════════════════════════╗
@@ -61,10 +65,10 @@ If you want to list also your GPU devices, use the `--gpu` CLI flag:
 
 ## With perf_event support
 
-If you want to list also your GPU devices, use the `--perf` CLI flag:
+List perf_event counters:
 
 ```bash
-./target/debug/joule-profiler --perf list-sensors
+joule-profiler --sources perf list-sensors
 ```
 
 ```

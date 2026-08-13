@@ -32,12 +32,14 @@ cat /proc/sys/kernel/perf_event_paranoid
 ## Configuring perf_event_paranoid
 
 ```bash
-# Set to level 1 (moderate restrictions)
-sudo sysctl kernel.perf_event_paranoid=1
+# Set to level 0
+sudo sysctl kernel.perf_event_paranoid=0
 
 # Or directly write to proc
-echo 1 | sudo tee /proc/sys/kernel/perf_event_paranoid
+echo 0 | sudo tee /proc/sys/kernel/perf_event_paranoid
 ```
+
+Using this level allow to open [**RAPL**](../rapl/introduction.md) and hardware counters.
 
 ## Security Implications
 
@@ -67,12 +69,12 @@ Performance counters can expose sensitive information about other processes. An 
 ### "Permission denied" errors
 
 ```
-Error: perf_event_paranoid level is 1, try setting it to 0 or launch Joule Profiler with root rights
+perf_event_paranoid level is 1, try setting it to 0 or launch Joule Profiler with root rights
 ```
 
 **Solution**: Either lower `perf_event_paranoid` level, grant Joule Profiler `CAP_PERFMON` capability or launch it with root privileges (sudo).
 
-> [!NOTE]
+> [!IMPORTANT]
 > To access RAPL counters using perf_event, you need to set perf_event_paranoid level to 0, or launch the profiler with root privileges.
 
 ## References

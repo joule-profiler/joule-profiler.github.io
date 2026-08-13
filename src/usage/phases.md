@@ -29,7 +29,7 @@ Interpreted languages (Python, JavaScript, Ruby) have significant startup overhe
 ```bash
 # Python interpreter initialization can be 50-100ms
 # Your actual work might be only 10ms
-sudo joule-profiler profile -- python my_script.py
+joule-profiler profile -- python script.py
 # Result: 90% of energy is interpreter startup, not what you want to measure
 ```
 
@@ -46,7 +46,7 @@ print("__END__", flush=True)
 ```
 
 ```bash
-sudo joule-profiler profile --token-pattern "__START__|__END__" -- python my_script.py
+sudo joule-profiler profile --token-pattern "__START__|__END__" -- python script.py
 ```
 
 Now you measure the `__START__` to `__END__` phase, excluding interpreter startup and library loading.
@@ -55,5 +55,3 @@ Now you measure the `__START__` to `__END__` phase, excluding interpreter startu
 
 Phases are detected by monitoring the program's stdout for tokens matching a regular expression.
 The profiler spawns the program and capture the standard output. Then, it scans each line and triggers measurements when tokens matching the configured regex pattern are detected. Finally, it associates metrics to each phase.
-
-Future versions may support lower-overhead mechanisms like inter-process communication with language-specific wrappers to minimize the overhead introduced by I/O operations.

@@ -14,7 +14,7 @@ This issue happens with **powercap** backend.
 
 **Check available sensors:**
 ```bash
-sudo joule-profiler list-sensors
+joule-profiler list-sensors
 ```
 
 **Solutions:**
@@ -23,7 +23,7 @@ sudo joule-profiler list-sensors
 - Verify CPU supports RAPL (most Intel CPUs since Sandy Bridge, AMD since Zen)
 - Try specifying custom RAPL path:
   ```bash
-  sudo joule-profiler --rapl-path /sys/class/powercap/intel-rapl phases -- ./my-program
+  sudo joule-profiler -D sources.rapl.rapl_path=/sys/class/powercap/intel-rapl phases -- <COMMAND>
   ```
 
 ## High Variance in Measurements
@@ -43,32 +43,25 @@ sudo joule-profiler list-sensors
 ### Solutions
 
 ```bash
-# 1. Use multiple iterations to reduce variance
-sudo joule-profiler sphasese -n 20 -- ./my-program
-
 # 2. Enable logging to see warnings and diagnostics
-sudo joule-profiler -vv phases -- ./my-program
+sudo joule-profiler -vv profile -- <COMMAND>
 
 # 3. Minimize background processes
 # Close browsers, IDEs, file syncing, etc.
 
 # 4. Disable CPU frequency scaling (optional, for more stable results)
 sudo cpupower frequency-set --governor performance
-
-# 5. Profile longer-running programs
-# Extend your workload or loop it internally:
-./my-program --repeat 1000
 ```
 
 **For Short Programs**: If your program must run quickly, increase internal iteration count rather than relying on profiler iterations.
 
 ## Tokens Not Detected (Phases Mode)
 
-**Problem:** No phases computed, warning "No tokens matching pattern".
+**Problem:** No phases computed.
 
 **Check with logging:**
 ```bash
-sudo joule-profiler -v phases -- ./my-program
+sudo joule-profiler -v profile -- <COMMAND>
 ```
 
 **Solutions:**
@@ -214,7 +207,7 @@ Here, we can see that the **__WORK_START__ -> __WORK_END__** has more accurate r
 - Verify your hardware supports the requested counters (e.g., RAPL, perf_event support)
 - Check that metric sources are properly initialized (use `-vv` for detailed logging)
 - Ensure you have necessary permissions for the metric source
-- List available sensors: `sudo joule-profiler list-sensors`
+- List available sensors: `joule-profiler list-sensors`
 
 ## High Overhead on Very Frequent Measurements
 
